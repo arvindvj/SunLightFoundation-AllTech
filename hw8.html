@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    
+        <script src="jquery-3.1.1.js"></script>
+        
+        <script src="angular.min.js"></script>
+        
+        <script src="h.js"></script>
+        
+        <script src="dirPagination.js"></script>
+        
+        <style>
+            .cap {
+                text-transform: capitalize;
+            }
+        </style>
+    </head>
+    <body ng-app="myModule">
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2">
+                <span style="font-size:1.5em;" class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" ></span>
+            </div>
+            <div class="col-xs-10 col-sm-10">
+                
+                    
+  <h2><small><img src="Pics/logo.png"></small>Congress API</h2>
+</div>
+                      
+            
+        </div>
+            
+        
+        <div class="row">
+            <div class="col-xs-2 col-sm-2">
+                <div class="navbar-collapse collapse sidebar-navbar-collapse navbar-inverse">
+          <ul class="nav navbar-nav">
+            <li><a href="#leg" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;Legislators</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;Bills</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Committees</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;&nbsp;Favourites</a></li>
+          </ul>
+                    
+        </div>
+            </div>
+            <div class="col-xs-10 col-sm-10" id="leg">
+                <h2>Legislators</h2>
+                <ul class="nav nav-tabs">
+                                                        <li class="active"><a class="no_color" data-toggle="tab" href="#state">By State</a></li>
+                                                        <li><a class="no_color" data-toggle="tab" href="#house">House</a></li>
+                                                        <li><a class="no_color" data-toggle="tab" href="#senate">Senate</a></li>
+                                                    </ul>
+                <form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input type="text" ng-model="search" class="form-control" placeholder="Search">
+  </div>
+</form>
+             
+                <div id="house" ng-controller="myController">
+                <table class="table table-hover"><thead><tr><th>Party</th><th>Name</th><th>Chamber</th><th>District</th><th>State</th><th> </th></tr></thead>
+                    <tbody>
+                    <tr dir-paginate="con in contents | itemsPerPage:10 | filter:search">
+                        <td><img ng-src="Pics/{{con.party}}.png" width="25" height="25"></td>
+                        <td>{{con.last_name}}, {{con.first_name}}</td>
+                        <td class="cap"><img ng-src="Pics/h.png" width="25" height="25"> {{con.chamber}}</td>
+                        <td>District {{con.district}}</td>
+                        <td>{{con.state}}</td>
+                        <td><input type=button value="View Details" /></td>
+                    </tr>
+                        </tbody>
+                    
+                            </table>
+                    <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                        </div>
+                
+
+                
+                    
+                
+                    </div>
+  
+</nav>
+            </div>
+        </div>
+    </body>
+</html>
