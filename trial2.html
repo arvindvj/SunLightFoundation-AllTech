@@ -19,13 +19,6 @@
         <script src="h.js"></script>
         
         <script src="dirPagination.js"></script>  
-        
-        <script>
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("active");
-            });
-        </script>
     </head>
     
     <body ng-controller="myController">
@@ -62,7 +55,7 @@
             </div>
             
             <div id="page-content-wrapper">
-                <div class="page-content" style="background:grey">
+                <div class="page-content" style="background:#F2F2F2">
                     <div class="container-fluid">
                         
                         <h2>Legislators</h2>
@@ -226,5 +219,13 @@
                 </div>
             </div>
         </div>
+        
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("active");
+            });
+        </script>
+    
     </body>
 </html>
