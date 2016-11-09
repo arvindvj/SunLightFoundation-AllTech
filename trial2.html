@@ -1,130 +1,24 @@
 <html ng-app="myModule">
     <head>
         <title>Congress</title>
+
         <script src="jquery-3.1.1.js"></script>
 
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
 
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        
+        <link rel="stylesheet" href="layout.css">
     
         <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
     
-        
         <script src="angular.min.js"></script>
         
         <script src="h.js"></script>
         
-        <script src="dirPagination.js"></script>
-        
-        
-        <style>
-            
-            .cap {
-                text-transform: capitalize;
-            }
-        #wrapper {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
-}
-#sidebar-wrapper {
-  margin-left: -250px;
-  top: 51px;
-  left: 250px;
-  width: 250px;
-  background: #000;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: all 0.4s ease 0s;
-}
-#wrapper.active {
-  padding-left: 0;
-}
-#wrapper.active #sidebar-wrapper {
-  left: 0;
-}
-#page-content-wrapper {
-  width: 100%;
-  padding-top: 70px;
-  transition: all 0.4s ease 0s;
-}
-.sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.sidebar-nav li {
-  line-height: 40px;
-  text-indent: 20px;
-}
-.sidebar-nav li a {
-  color: #999999;
-  display: block;
-  text-decoration: none;
-  padding-left: 60px;
-}
-.sidebar-nav li a span:before {
-  position: absolute;
-  left: 0;
-  color: #41484c;
-  text-align: center;
-  width: 20px;
-  line-height: 18px;
-}
-.sidebar-nav li a:hover,
-.sidebar-nav li.active {
-  color: #fff;
-  background: rgba(255,255,255,0.2);
-  text-decoration: none;
-}
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-  text-decoration: none;
-}
-.sidebar-nav > .sidebar-brand {
-  height: 65px;
-  line-height: 60px;
-  font-size: 18px;
-}
-.sidebar-nav > .sidebar-brand a {
-  color: #999999;
-}
-.sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
-  background: none;
-}
-#menu-toggle {
-    text-decoration: none;
-    float: left;
-    color: #fff;
-    padding-right: 15px;
-}
-@media (max-width:767px) {
-#wrapper {
-  padding-left: 0;
-}
-#sidebar-wrapper {
-  left: 0;
-}
-#wrapper.active {
-  position: relative;
-  left: 250px;
-}
-#wrapper.active #sidebar-wrapper {
-  left: 250px;
-  width: 250px;
-  transition: all 0.4s ease 0s;
-}
-#menu-toggle {
-  display: inline-block;
-}
-}
-        </style>
-        
+        <script src="dirPagination.js"></script>        
     </head>
     
     <body ng-controller="myController">
@@ -161,10 +55,11 @@
     </div>
     <!-- Page content -->
     <div id="page-content-wrapper">
-        <div class="page-content">
+        <div class="page-content" style="background:grey">
             <div class="container-fluid">
                 <h2>Legislators</h2>
                 <hr>
+                <div class="round2">
                 <ul class="nav nav-tabs">
                                                         <li class="active"><a class="no_color" data-toggle="tab" href="#state">By State</a></li>
                                                         <li><a class="no_color" data-toggle="tab" href="#house">House</a></li>
@@ -176,7 +71,7 @@
   </div>
 </form>
              
-                <div >
+    
                     <div id="msg">
                 <table class="table table-hover"><thead><tr><th>Party</th><th>Name</th><th>Chamber</th><th>District</th><th>State</th><th> </th></tr></thead>
                     <tbody>
@@ -195,13 +90,17 @@
                         
             
                 </div>
-                    <div id="myCarousel" class="carousel slide">
+                </div>
+                    <div id="myCarousel" class="carousel slide round2">
             <!-- Carousel items -->
             <div class="carousel-inner">
-                
+                       <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button> Details <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
                 <div class="item active">
                     <div class="row">
-                       
+
+
                             <div class="col-xs-6 col-sm-6">
 
                                 <table class="table">
@@ -217,11 +116,25 @@
                                     <tr><td>Office</td><td>{{contents[0].office}}</td></tr>
                                     <tr><td>State</td><td>{{contents[0].state_name}}</td></tr>
                                     <tr><td>Fax</td><td>{{contents[0].fax}}</td></tr>
-                                    <tr><td>Birthday</td>{{contents[0].birthday}}</tr>
+                                    <tr><td>Birthday</td><td>{{contents[0].birthday}}</td></tr>
                                     <tr><td>Social Media</td><td><a href="https://twitter.com/{{contents[0].twitter_id}}" target=_blank><img src="Pics/t.png" style="width:3em;height:3em"></a>      <a href="https://www.facebook.com/{{contents[0].facebook_id}}" target=_blank><img src="Pics/f.png" style="width:3em;height:3em"></a>      <a href="{{contents[0].website}}" target=_blank><img src="Pics/w.png" style="width:3em;height:3em"></a></td></tr>
 
                         </table>
                             </div>
+                                                    <div class="col-xs-6 col-sm-6">
+                                                        Committees
+                                                        <table class="table">
+                                                            <tr><th>Chamber</th><th>Committee ID</th><th>Name</th></tr>
+                                                            <tr><td></td></tr>
+                                                        </table>
+                                                        Bills
+                                                        <table class="table">
+                                                            <tr><th>Bill ID</th><th>Title</th><th>Chamber</th><th>Bill Type</th><th>Congress</th><th>Link</th></tr>
+                                                            <tr><td></td></tr>
+                                                        </table>
+                        </div>
+                                                        
+
                                     </div>
         
                 <!-- Carousel nav -->
