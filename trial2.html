@@ -24,7 +24,7 @@
     <body ng-controller="myController">
         <div id="wrapper">
             
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-fixed-top" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -35,7 +35,6 @@
                         </button>
                         <div  class="navbar-brand">
                             <a id="menu-toggle" href="#" class="glyphicon glyphicon-menu-hamburger btn-menu toggle">
-                                <i class="fa fa-bars"></i>
                             </a>
 
                         </div>
@@ -46,7 +45,7 @@
             <div id="sidebar-wrapper">
                 <nav id="spy">
                     <ul class="sidebar-nav nav">
-                        <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;Legislators</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Legislators</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;Bills</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Committees</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;&nbsp;Favourites</a></li>
@@ -55,60 +54,67 @@
             </div>
             
             <div id="page-content-wrapper">
-                <div class="page-content" style="background:#F2F2F2">
-                    <div class="container-fluid">
-                        
+                <div class="page-content">
+                    <nav class="navbar">
+                        <img src="Pics/logo.png" style="padding-left:35%;"><font size="+2">Congress API</font>
+                    </nav>
+                    <div class="container-fluid" style="background:#F2F2F2; height:100%;">
                         <h2>Legislators</h2>
-                        <hr>
-                        <div class="round2">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a class="no_color" data-toggle="tab" href="#state">By State</a></li>
-                                <li><a class="no_color" data-toggle="tab" href="#house">House</a></li>
-                                <li><a class="no_color" data-toggle="tab" href="#senate">Senate</a></li>
-                            </ul>
-                            <form class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input type="text" ng-model="searchText" class="form-control" placeholder="Search">
-                                </div>
-                            </form>
-
-                            <div id="msg">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Party</th>
-                                            <th>Name</th>
-                                            <th>Chamber</th>
-                                            <th>District</th>
-                                            <th>State</th>
-                                            <th> </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr pagination-id="paginate1" dir-paginate="con in contents | filter:searchText | itemsPerPage:10">
-                                            <td><img ng-src="Pics/{{con.party}}.png" width="25" height="25"></td>
-                                            <td>{{con.last_name}}, {{con.first_name}}</td>
-                                            <td class="cap"><img ng-src="Pics/h.png" width="25" height="25"> {{con.chamber}}</td>
-                                            <td>District {{con.district}}</td>
-                                            <td>{{con.state_name}}</td>
-                                            <td><input type=button value="View Details" /></td>
-                                        </tr>
-                                    </tbody>        
-                                </table>
-                                <dir-pagination-controls pagination-id="paginate1" max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
-                            </div>
-                        </div>
-                        
+                        <hr style="border-top: 1px solid #ccc;">
                         <div id="myCarousel" class="carousel slide round2">
                             <div class="carousel-inner">
-                                <button type="button" class="btn btn-default btn-lg">
-                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                </button> Details 
-                                <button type="button" class="btn btn-default btn-lg">
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                </button>
-                                
+                                                                
                                 <div class="item active">
+                                    <div >
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a class="no_color" data-toggle="tab" href="#state">By State</a></li>
+                                            <li><a class="no_color" data-toggle="tab" href="#house">House</a></li>
+                                            <li><a class="no_color" data-toggle="tab" href="#senate">Senate</a></li>
+                                        </ul>
+                                        <form class="navbar-form navbar-left" role="search">
+                                            <div class="form-group">
+                                                <input type="text" ng-model="searchText" class="form-control" placeholder="Search">
+                                            </div>
+                                        </form>
+                                        <select class="selectpicker" ng-options="state for state in states" ng-model="searchText">
+                                            <option value="">All States</option>
+                                        </select>
+
+                                        <div id="msg">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Party</th>
+                                                        <th>Name</th>
+                                                        <th>Chamber</th>
+                                                        <th>District</th>
+                                                        <th>State</th>
+                                                        <th> </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr pagination-id="paginate1" dir-paginate="con in contents | filter:searchText | itemsPerPage:10">
+                                                        <td><img ng-src="Pics/{{con.party}}.png" width="25" height="25"></td>
+                                                        <td>{{con.last_name}}, {{con.first_name}}</td>
+                                                        <td class="cap"><img ng-src="Pics/h.png" width="25" height="25"> {{con.chamber}}</td>
+                                                        <td>District {{con.district}}</td>
+                                                        <td>{{con.state_name}}</td>
+                                                        <td><button type=button class="btn btn-primary">View Details</button></td>
+                                                    </tr>
+                                                </tbody>        
+                                            </table>
+                                            <dir-pagination-controls pagination-id="paginate1" max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <button type="button" class="btn btn-default btn-lg" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    </button> Details 
+                                    <button type="button" class="btn btn-default btn-lg" id="click_star">
+                                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                    </button>
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6">
                                             <table class="table">
@@ -182,7 +188,7 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        
+
                                         <div class="col-xs-6 col-sm-6">
                                             Committees
                                             <table class="table">
@@ -212,6 +218,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
                             </div>    
                          </div>
                         
@@ -224,6 +234,12 @@
             $("#menu-toggle").click(function(e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("active");
+            });
+            $('button[data-slide="prev"]').click(function() {
+                $('#myCarousel').carousel('prev');
+            });
+            $('#click_star').click(function() {
+                $("span", this).toggleClass("glyphicon glyphicon-star glyphicon glyphicon-star-empty");
             });
         </script>
     

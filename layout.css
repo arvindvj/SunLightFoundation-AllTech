@@ -9,14 +9,14 @@
 }
             
 #wrapper {
-  padding-left: 250px;
+  padding-left: 200px;
   transition: all 0.4s ease 0s;
 }
 
 #sidebar-wrapper {
   margin-left: -250px;
   top: 51px;
-  left: 250px;
+  left: 200px;
   width: 250px;
   background: #3C3C3C;
   position: fixed;
@@ -36,7 +36,7 @@
 
 #page-content-wrapper {
   width: 100%;
-  padding-top: 70px;
+  padding-top: 0px;
   transition: all 0.4s ease 0s;
 }
 
@@ -93,38 +93,39 @@
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
+  color: #999999;
   background: none;
 }
 
 #menu-toggle {
     text-decoration: none;
     float: left;
-    color: #fff;
+    color: #000;
     padding-right: 15px;
 }
 
 @media (max-width:767px) {
 
-#wrapper {
-  padding-left: 0;
-}
-    
-#sidebar-wrapper {
-  left: 0;
-}
-    
-#wrapper.active {
-  position: relative;
-  left: 250px;
-}
-    
-#wrapper.active #sidebar-wrapper {
-  left: 250px;
-  width: 250px;
-  transition: all 0.4s ease 0s;
-}
-    
-#menu-toggle {
-  display: inline-block;
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+      left: 0;
+    }
+
+    #wrapper.active {
+      position: relative;
+      left: 250px;
+    }
+
+    #wrapper.active #sidebar-wrapper {
+      left: 200px;
+      width: 250px;
+      transition: all 0.4s ease 0s;
+    }
+
+    #menu-toggle {
+      display: inline-block;
+    }
 }
