@@ -1,3 +1,8 @@
+.colorlink li a:hover,
+.colorlink li a {
+    color: darkgray;
+}
+
 .cap {
     text-transform: capitalize;
 }
@@ -62,9 +67,7 @@
 }
 
 .sidebar-nav li a span:before {
-  position: absolute;
   left: 0;
-  color: #41484c;
   text-align: center;
   width: 20px;
   line-height: 18px;
@@ -80,6 +83,7 @@
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
+    background-color: #3C3C3C;
 }
 
 .sidebar-nav > .sidebar-brand {
